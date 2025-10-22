@@ -12,10 +12,21 @@
     height: 40px;
     background-color: brown;
     position: absolute;
-    bottom: 50px;
+    bottom: 30px;
     left: 50%;
     transform: translateX(-50%);
     z-index: 2;
+}
+#clickable-area-for-plank{
+    background-color: rgba(246, 59, 26, 0.085);
+    width: 400px;
+    height: 46vh;
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    cursor: pointer;
+    z-index: 3;
 }
 #pivot{
     width: 0;
