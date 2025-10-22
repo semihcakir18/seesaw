@@ -26,24 +26,29 @@ function updateLeftAndRightTorque(force, distanceFromPivot) {
     // No torque applied if clicked exactly at the pivot
   }
 }
-
-function handlePlankClick(event) {
+function getClickPosition(event) {
   const clickableArea = document.getElementById("clickable-area-for-plank");
   const rect = clickableArea.getBoundingClientRect();
+  return event.clientX - rect.left;
+}
+function showInfo(leftTorque, rightTorque, tiltAngle) {
+  const leftWeightInfo = document.getElementById("left-weight");
+  const rightWeightInfo = document.getElementById("right-weight");
+  const tiltAngleInfo = document.getElementById("angle");
+  leftWeightInfo.textContent = `Left Torque: ${leftTorque.toFixed(2)}`;
+  rightWeightInfo.textContent = `Right Torque: ${rightTorque.toFixed(2)}`;
+  tiltAngleInfo.textContent = `Tilt Angle: ${tiltAngle.toFixed(2)}°`;
+}
 
-  const x = event.clientX - rect.left;
-
-  console.log("x:", x);
-  let distanceFromPivot = x - 200;
-  console.log("distanceFromPivot:", distanceFromPivot);
-
+function handlePlankClick(event) {
+  const x = getClickPosition(event);
+  const distanceFromPivot = x - 200;
   const force = createRandomForce();
-  console.log("force:", force);
 
   updateLeftAndRightTorque(force, distanceFromPivot);
   tiltAngle = calculateTiltAngle(leftTorque, rightTorque);
-  console.log("tiltAngle:", tiltAngle);
   changePlankTiltVisual(tiltAngle);
+  showInfo(leftTorque, rightTorque, tiltAngle);
 }
 
 document
