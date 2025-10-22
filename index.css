@@ -1,0 +1,31 @@
+#container{
+    background-color: rgba(173, 216, 230, 0.148);
+    width: 50vw;
+    height: 50vh;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+}
+#plank{
+    width: 400px;
+    height: 40px;
+    background-color: brown;
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+}
+#pivot{
+    width: 0;
+    height: 0;
+    border-left: 30px solid transparent;
+    border-right: 30px solid transparent;
+    border-bottom: 50px solid gray;
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+}
