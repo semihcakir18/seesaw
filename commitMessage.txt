@@ -1,0 +1,6 @@
+Add localStorage to persist seesaw state across page refreshes
+- Implement save/load/reset state functions
+- Store objects array with all weight properties
+- Add Reset button to clear saved data
+- Auto-load state on page load
+- Removed the params of showInfo since the variables are already global

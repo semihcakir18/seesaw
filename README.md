@@ -1,0 +1,1 @@
+"The tilt angle formula uses a simplified linear relationship for visual purposes, rather than realistic rotational dynamics where any torque imbalance would result in maximum tilt."

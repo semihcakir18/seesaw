@@ -7,9 +7,9 @@ let zIndexCounterForWeights = 3;
 let objects = [];
 let nextWeight = null;
 
-const tapSound = new Audio('public/tap.mp3');
+const tapSound = new Audio('tap.mp3');
 tapSound.volume = 0.4;
-const resetSound = new Audio('public/reset.mp3');
+const resetSound = new Audio('reset.mp3');
 resetSound.volume = 1;
 
 function saveState() {
