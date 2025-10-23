@@ -5,6 +5,7 @@ let rightWeight = 0;
 let tiltAngle = 0;
 let zIndexCounterForWeights = 3;
 let objects = [];
+let nextWeight = null;
 
 function saveState() {
   const state = {
@@ -172,7 +173,7 @@ function createWeightObject(x, weight) {
 function handlePlankClick(event) {
   const { x, y } = getClickPosition(event);
   const distanceFromPivot = x - 200; // the plank is 400px wide, so pivot is at 200px
-  const force = createRandomForce();
+  const force = nextWeight;
 
   createWeightObject(x, force);
   updateLeftAndRightTorque(force, distanceFromPivot);
@@ -180,14 +181,57 @@ function handlePlankClick(event) {
   changePlankTiltVisual(tiltAngle);
   showInfo();
   saveState();
+
+  nextWeight = createRandomForce();
+  updatePreviewSize();
 }
 
-window.addEventListener("DOMContentLoaded", function() {
+let previewElement = null;
+
+function updatePreviewSize() {
+  if (previewElement && nextWeight) {
+    const size = 20 + nextWeight * 4;
+    previewElement.style.width = size + "px";
+    previewElement.style.height = size + "px";
+    previewElement.style.top = -size + "px";
+  }
+
+  const nextWeightDisplay = document.getElementById("next-weight-value");
+  if (nextWeightDisplay && nextWeight) {
+    nextWeightDisplay.textContent = nextWeight;
+  }
+}
+
+window.addEventListener("DOMContentLoaded", function () {
   loadState();
 
-  document
-    .getElementById("clickable-area-for-plank")
-    .addEventListener("click", handlePlankClick);
+  const clickableArea = document.getElementById("clickable-area-for-plank");
+  const plank = document.getElementById("plank");
+
+  nextWeight = createRandomForce();
+
+  previewElement = document.createElement("div");
+  previewElement.className = "weight-preview";
+  plank.appendChild(previewElement);
+
+  updatePreviewSize();
+
+  clickableArea.addEventListener("mousemove", function (event) {
+    const rect = clickableArea.getBoundingClientRect();
+    const x = event.clientX - rect.left;
+    previewElement.style.left = x + "px";
+    previewElement.style.display = "block";
+  });
+
+  clickableArea.addEventListener("mouseenter", function () {
+    previewElement.style.display = "block";
+  });
+
+  clickableArea.addEventListener("mouseleave", function () {
+    previewElement.style.display = "none";
+  });
+
+  clickableArea.addEventListener("click", handlePlankClick);
 
   document.getElementById("reset-btn").addEventListener("click", resetState);
 

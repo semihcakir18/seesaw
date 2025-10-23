@@ -4,7 +4,7 @@
   --bg-page: #b6ad90;
   --bg-container: #656d4a;
   --bg-seesaw: #c2c5aa;
-  --bg-info-box: #f5f5f5;
+  --bg-info-box: #f5f5f5c9;
 
   /* Element colors */
   --color-plank: #432818;
@@ -61,6 +61,22 @@ html {
   position: relative;
   user-select: none;
 }
+
+#next-weight-display {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  padding: 8px 16px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+  z-index: 5;
+}
+
+#next-weight-value {
+  color: var(--color-info-text);
+  font-size: 18px;
+}
 #plank {
   width: 400px;
   height: 20px;
@@ -107,6 +123,17 @@ html {
   animation: dropDown 0.5s ease-in;
 }
 
+.weight-preview {
+  border-radius: 50%;
+  position: absolute;
+  transform: translateX(-50%);
+  opacity: 0.4;
+  border: 3px dashed rgba(255, 255, 255, 0.9);
+  background-color: rgba(255, 255, 255, 0.2);
+  pointer-events: none;
+  z-index: 10;
+}
+
 @keyframes dropDown {
   from {
     transform: translateX(-50%) translateY(-150px);
@@ -124,7 +151,6 @@ html {
 }
 
 #info-container p {
-  margin: 0;
   padding: 12px 20px;
   background-color: var(--bg-info-box);
   border-radius: 8px;
