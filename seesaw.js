@@ -7,6 +7,11 @@ let zIndexCounterForWeights = 3;
 let objects = [];
 let nextWeight = null;
 
+const tapSound = new Audio('public/tap.mp3');
+tapSound.volume = 0.4;
+const resetSound = new Audio('public/reset.mp3');
+resetSound.volume = 1;
+
 function saveState() {
   const state = {
     objects: objects,
@@ -45,6 +50,8 @@ function loadState() {
 
 function resetState() {
   localStorage.removeItem("seesawState");
+  resetSound.currentTime = 0;
+  resetSound.play().catch(err => console.log('Sound error:', err));
 
   document.querySelectorAll(".weight-object").forEach((obj) => obj.remove());
 
@@ -174,6 +181,9 @@ function handlePlankClick(event) {
   const { x, y } = getClickPosition(event);
   const distanceFromPivot = x - 200; // the plank is 400px wide, so pivot is at 200px
   const force = nextWeight;
+
+  tapSound.currentTime = 0;
+  tapSound.play().catch(err => console.log('Sound error:', err));
 
   createWeightObject(x, force);
   updateLeftAndRightTorque(force, distanceFromPivot);

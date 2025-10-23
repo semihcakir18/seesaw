@@ -188,3 +188,28 @@ html {
 #reset-btn:hover {
   background-color: var(--color-btn-reset-hover);
 }
+
+#footer {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 11px;
+  color: rgba(0, 0, 0, 0.25);
+  text-align: center;
+  font-weight: 300;
+}
+
+#footer a {
+  color: rgba(0, 0, 0, 0.3);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+#footer a:hover {
+  color: rgba(0, 0, 0, 0.5);
+}
+#semikko-logo{
+    width: 20px;
+    filter: grayscale(1) opacity(0.6);
+}
