@@ -1,3 +1,9 @@
+let leftTorque = 0;
+let rightTorque = 0;
+let leftWeight = 0;
+let rightWeight = 0;
+let tiltAngle = 0;
+let zIndexCounterForWeights = 3;
 let objects = [];
 
 function saveState() {
@@ -33,7 +39,7 @@ function loadState() {
   });
 
   changePlankTiltVisual(tiltAngle);
-  showInfo(leftTorque, rightTorque, tiltAngle);
+  showInfo();
 }
 
 function resetState() {
@@ -50,7 +56,7 @@ function resetState() {
   zIndexCounterForWeights = 1;
 
   changePlankTiltVisual(0);
-  showInfo(0, 0, 0);
+  showInfo();
 }
 
 // This function may only return the multiplaction of two numbers , but i added it for clarity
@@ -94,11 +100,11 @@ function showInfo() {
   const leftWeightInfo = document.getElementById("left-weight");
   const rightWeightInfo = document.getElementById("right-weight");
   const tiltAngleInfo = document.getElementById("angle");
-  leftTorqueInfo.textContent = `Left Torque: ${leftTorque.toFixed(2)}`;
-  rightTorqueInfo.textContent = `Right Torque: ${rightTorque.toFixed(2)}`;
-  leftWeightInfo.textContent = `Left Weight: ${leftWeight} kg`;
-  rightWeightInfo.textContent = `Right Weight: ${rightWeight} kg`;
-  tiltAngleInfo.textContent = `Tilt Angle: ${tiltAngle.toFixed(2)}°`;
+  leftWeightInfo.textContent = `${leftWeight} kg`;
+  rightWeightInfo.textContent = `${rightWeight} kg`;
+  tiltAngleInfo.textContent = `${tiltAngle.toFixed(1)}°`;
+  leftTorqueInfo.textContent = `${leftTorque} Nm`;
+  rightTorqueInfo.textContent = `${rightTorque} Nm`;
 }
 
 let randomColorsToPickFromForWeights = [
@@ -172,10 +178,19 @@ function handlePlankClick(event) {
   saveState();
 }
 
-document
-  .getElementById("clickable-area-for-plank")
-  .addEventListener("click", handlePlankClick);
+window.addEventListener("DOMContentLoaded", function() {
+  loadState();
 
-document.getElementById("reset-btn").addEventListener("click", resetState);
+  document
+    .getElementById("clickable-area-for-plank")
+    .addEventListener("click", handlePlankClick);
 
-window.addEventListener("DOMContentLoaded", loadState);
+  document
+    .getElementById("reset-btn")
+    .addEventListener("click", resetState);
+
+
+  if (!localStorage.getItem('seesawState')) {
+    showInfo();
+  }
+});

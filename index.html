@@ -5,19 +5,22 @@
   <link rel="stylesheet" href="index.css" />
 </head>
 <body>
+  <div id="general-container">
   <div id="info-container">
-    <p id="left-torque"></p>
-    <p id="right-torque"></p>
-    <p id="angle"></p>
-    <p id="right-weight"></p>
-    <p id="left-weight"></p>
+    <p id="left-weight" data-label="Left Weight"></p>
+    <p id="right-weight" data-label="Right Weight"></p>
+    <p id="angle" data-label="Tilt Angle"></p>
+    <p id="left-torque" data-label="Left Torque"></p>
+    <p id="right-torque" data-label="Right Torque"></p>
   </div>
-  <button id="reset-btn">Reset</button>
-  <div id="container">
+  
+  <div id="seesaw-container">
     <div id="clickable-area-for-plank">
       <div id="plank"></div>
     </div>
     <div id="pivot"></div>
+  </div>
+  <button id="reset-btn">Reset</button>
   </div>
   <script src="seesaw.js"></script>
 </body>
