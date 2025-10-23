@@ -120,6 +120,7 @@ function createWeightObjectFromData(x, weight, color, zIndex) {
   const plank = document.getElementById("plank");
   const weightObj = document.createElement("div");
   let size = 20 + weight * 4;
+  let fontSize = Math.max(8, size / 3.5);
 
   weightObj.style.width = size + "px";
   weightObj.style.height = size + "px";
@@ -128,6 +129,7 @@ function createWeightObjectFromData(x, weight, color, zIndex) {
   weightObj.textContent = weight + "kg";
   weightObj.style.left = x + "px";
   weightObj.style.top = -size + "px";
+  weightObj.style.fontSize = fontSize + "px";
   weightObj.style.zIndex = zIndex.toString();
   weightObj.style.animation = "none";
 
@@ -138,6 +140,7 @@ function createWeightObject(x, weight) {
   const plank = document.getElementById("plank");
   const weightObj = document.createElement("div");
   let size = 20 + weight * 4;
+  let fontSize = Math.max(8, size / 3.5);
 
   const color =
     randomColorsToPickFromForWeights[
@@ -151,6 +154,7 @@ function createWeightObject(x, weight) {
   weightObj.textContent = weight + "kg";
   weightObj.style.left = x + "px";
   weightObj.style.top = -size + "px";
+  weightObj.style.fontSize = fontSize + "px";
   weightObj.style.zIndex = zIndexCounterForWeights.toString();
 
   plank.appendChild(weightObj);
