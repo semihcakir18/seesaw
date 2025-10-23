@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Chiron+Sung+HK:ital,wght@0,200..900;1,200..900&display=swap');
 :root {
   /* Background colors */
   --bg-page: #b6ad90;
@@ -32,6 +33,7 @@ html {
   height: 100%;
   background-color: var(--bg-page);
   user-select: none;
+  font-family: "Chiron Sung HK", serif;
 }
 
 #general-container {
@@ -119,7 +121,6 @@ html {
   display: flex;
   gap: 15px;
   margin-bottom: 20px;
-  font-family: Arial, sans-serif;
 }
 
 #info-container p {

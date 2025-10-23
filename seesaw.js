@@ -53,7 +53,7 @@ function resetState() {
   leftWeight = 0;
   rightWeight = 0;
   tiltAngle = 0;
-  zIndexCounterForWeights = 1;
+  zIndexCounterForWeights = 3;
 
   changePlankTiltVisual(0);
   showInfo();
@@ -91,7 +91,6 @@ function getClickPosition(event) {
   const rect = clickableArea.getBoundingClientRect();
   const x = event.clientX - rect.left;
   const y = event.clientY - rect.top;
-  console.log(`Click position - X: ${x}, Y: ${y}`);
   return { x, y };
 }
 function showInfo() {
@@ -108,12 +107,13 @@ function showInfo() {
 }
 
 let randomColorsToPickFromForWeights = [
-  "#772918ff",
-  "#1d8831ff",
-  "#172874ff",
-  "#5f1664ff",
-  "#156662ff",
-  "#696d1aff",
+  "#210F04",
+  "#452103",
+  "#690500",
+  "#934B00",
+  "#BB6B00",
+  "#414833",
+  "#49111c",
 ];
 
 function createWeightObjectFromData(x, weight, color, zIndex) {
@@ -189,12 +189,9 @@ window.addEventListener("DOMContentLoaded", function() {
     .getElementById("clickable-area-for-plank")
     .addEventListener("click", handlePlankClick);
 
-  document
-    .getElementById("reset-btn")
-    .addEventListener("click", resetState);
+  document.getElementById("reset-btn").addEventListener("click", resetState);
 
-
-  if (!localStorage.getItem('seesawState')) {
+  if (!localStorage.getItem("seesawState")) {
     showInfo();
   }
 });
