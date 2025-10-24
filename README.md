@@ -1,5 +1,5 @@
 # Seesaw Simulation
-
+<img width="1919" height="928" alt="image" src="https://github.com/user-attachments/assets/82e99295-4bd4-4822-8041-8f3934f96e43" />
 
 ## How to Run
 
